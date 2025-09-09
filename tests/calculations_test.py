@@ -1,6 +1,7 @@
 # System Modules
 import sys
 import os
+import pytest
 
 # Installed Modules
 # None
@@ -20,6 +21,12 @@ def test_area_of_circle_positive_radius():
 
     # Assert
     assert abs(result - 3.14159) < 1e-5
+
+def test_area_of_circle_negative_radius():
+    """Test with a negative radius (should raise ValueError)."""
+    radius = -1
+    with pytest.raises(ValueError):
+        area_of_circle(radius)
 
 
 def test_area_of_circle_zero_radius():
@@ -68,3 +75,9 @@ def test_get_nth_fibonacci_ten():
 
     # Assert
     assert result == 55
+
+def test_get_nth_fibonacci_negative():
+    """Test with n < 0 (should raise ValueError)."""
+    n = -5
+    with pytest.raises(ValueError):
+        get_nth_fibonacci(n)
